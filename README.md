@@ -1,7 +1,9 @@
 # dataviz-poc
 
 ## Overview 
-An oppourtunity to explore some ideas inspired from creating this other POC for a random plot generator using lit-html.  The idea behind this POC is to see if there is a viable option for creating a charting / vizualization library based of tagged template literals / web components.
+An oppourtunity to explore some ideas inspired from creating this [other POC](https://github.com/ProjectEvergreen/random-plot-generator), of a random plot generator using [lit-html](https://lit-html.polymer-project.org/).  
+
+The idea behind this POC is to see if there is a viable option for creating a charting / vizualization library based of tagged template literals / web components.
 
 ## Objectives
 1. Setup some development tools
