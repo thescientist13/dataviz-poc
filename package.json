@@ -1,0 +1,17 @@
+{
+  "name": "dataviz-poc",
+  "version": "0.1.0",
+  "description": "An oppourtunity to explore some ideas inspired from the the random plot generator POC, using lit-html.",
+  "author": "Owen Buckley <owen@thegreenhouse.io>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thescientist13/dataviz-poc.git"
+  },
+  "scripts": {
+    "start": "live-server ./src --open"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  }
+}
