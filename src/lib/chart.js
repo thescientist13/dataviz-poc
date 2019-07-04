@@ -28,6 +28,7 @@ class ChartComponent extends HTMLElement {
     }
   }
 
+  /* eslint-disable indent */
   template() {
     return svg`
       <svg width="500" height="500" style="border: 1px solid #020202">
@@ -47,6 +48,7 @@ class ChartComponent extends HTMLElement {
       </svg>
     `;
   }
+  /* eslint-enable */
 }
   
 customElements.define('chart-lib', ChartComponent);

@@ -23,6 +23,11 @@ $ npm start
 
 > Your browser should automatically open to `http://127.0.0.1:8080/`
 
+When submitting a PR, please run this first before opening:
+```
+$ npm run lint
+```
+
 ## Thoughts / Questions
 1. Also depend on LitElement or just stick to native `HTMLElement`?
 
