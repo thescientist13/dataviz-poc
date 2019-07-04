@@ -1,7 +1,7 @@
 import { render, svg } from 'https://unpkg.com/lit-html@0.10.2/lit-html.js';
 import { repeat } from 'https://unpkg.com/lit-html@0.10.2/lib/repeat.js';
 
-
+// https://hackernoon.com/a-simple-pie-chart-in-svg-dbdd653b6936
 class PieChartComponent extends HTMLElement {
     constructor() {
         super();
