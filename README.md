@@ -1,17 +1,17 @@
 # dataviz-poc
 
 ## Overview 
-An oppourtunity to explore some ideas inspired from creating this [other POC](https://github.com/ProjectEvergreen/random-plot-generator), of a random plot generator using [lit-html](https://lit-html.polymer-project.org/).  
+This repository was created as an oppourtunity to explore some ideas inspired from creating this [other POC](https://github.com/ProjectEvergreen/random-plot-generator) of a random plot generator using [lit-html](https://lit-html.polymer-project.org/).  
 
-The idea behind this POC is to see if there is a viable option for creating a charting / vizualization library based of tagged template literals / web components.
+The idea behind this POC is to see if there is a viable path towards creating a modern ES2015+ based charting / vizualization library based off tagged template literals, SVG, and web components.
 
 ## Motivations
-Although the first couple of goals will be to build up some general domain konwledge around charting / visualizations / etc, the primary motivations around this project are to try and simplify the process of making visualizations for web applications from an authoring perspective as well as improving maintainability, testability, and performance.
+The primary motivation of this project is to promote an alternative approach to creating visualizations for the web leveraging more of the native capabilities already available in today's modern browsers.  By combining SVG and JavaScript, a more declarative method of authoring vizualizations can be achieved while also improving maintainability, testability, and performance.
 
 ### A long time ago...
-If we think about HTML and it's declarivate nature, a side effect to that can also be one of it's most compelling features, in how easy it can be to map the markup you write to the output sent to the browser.  As it is literally 1:1, writing HTML can be extremely predictive in terms of structure and end result.  
+If we start by thinking about HTML and it's declarivate nature, we can arrive at one of it's most compelling features for developers, in that it is fairly easy to visualize the output of the code you write to the output you see in the browser.  Without any library or framework involved, essentially the code you write is `1:1` as you would expect when viewing the source.  This is further reinforced given that HTML is structure component of the web.  (CSS being presentation, and JavaScript being interactivity.)
 
-For example, this can be pretty easily understood as to what the final output would be.
+For example, this can be pretty easily understood, in terms of what the output would be.
 ```html
 <html>
   <head>
@@ -37,15 +37,17 @@ For example, this can be pretty easily understood as to what the final output wo
   </body>
 </html>
 ```
-In fact, HTML even has tags for drawing shapes like `<circle>` and `<line>` through [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG).
 
-### The Templating Engine is coming from inside the computer!
-This will become more apparent later but wanted to side track for a moment to specifically touch upon one of the coolest new feartures introduced into JavaScript lately; the tagged template literal.
+HTML even has tags that can be used for drawing shapes like `<circle>` and `<line>` through the use of [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG).
 
-With this feature, dynamica string interpolation now becomes first class in JavaScript allowing powerful syntax like this now for free in the browser
+
+### A JavaScript Templating Engine
+This will become more influential in a later section, but worth intorducing as it is a foundational element to the over all API design, and that is one of the coolest new feartures introduced into JavaScript lately; the tagged [template literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals).
+
+With this syntax, dynamic string interpolation (templating) now becomes a first class citizen in JavaScript, bring powerful syntax like this now for free to the browser:
 ```javascript
 const name = 'John';
-const greeting `Hello, ${name}!`
+const greeting = `Hello, ${name}!`
 
 console.log(greeting); // Hello, John!
 ```
@@ -113,12 +115,19 @@ function stackMax(serie) {
 </script>
 ```
 
-Not particularly declarivate or predictive, is it?  While not necessarily a bad thing and certainly not picking on D3 as it can / does provide a lot of value in calculating things like scaling and points, but from an authoring perspective, it's a lot of JavaScript, when some HTML might provide a little more of an ergonomic and intuitive developer experience.  
+Not particularly declarivate or predictive, is it?  While not necessarily a bad thing and certainly not picking on D3 as it can / does provide a lot of value in calculating things like scaling and points, but from an authoring perspective, it's a lot of JavaScript, when (IMO) some HTML might provide a little more of an ergonomic and intuitive developer experience.  
 
-### Putting It All Together
-So what's the point of all this?  
+### Bringing It All Together
+So really though, where are you going with this?  
 
-If we take the random plot generator this POC was inpired from, we can see that to achieve the output of a set of points in a plot with a line down the middle seperating these points conditionally (blue vs green), we can see that by combining SVG + JavaScript, we are able [achieve that output](https://github.com/ProjectEvergreen/random-plot-generator/blob/master/src/components/plot-generator.js#L86) with code that looks like this (and a little help from **lit-html**):
+If we take a look at the random plot generator this POC was inpired from, we can see that to achieve the output of 
+1. A set of points (0<=x<=100)
+1. In a plot (square)
+1. With a line drawn down the middle diagonally
+1. With points ordered on either side of the line, by color (blue vs green) 
+1. And filling all those dots
+
+We can see that by combining SVG + JavaScript, we are able [achieve that output](https://github.com/ProjectEvergreen/random-plot-generator/blob/master/src/components/plot-generator.js#L86) with code that looks like this (and a little help from **lit-html**):
 ```javascript
 import { svg } from 'https://unpkg.com/lit-html@0.10.2/lit-html.js';
 
@@ -146,12 +155,22 @@ const template = svg`
 }
 ```
 
-## API Design (WIP)
-So with the random plot generator in mind and it's example of combinging SVG + JavaScript, there is definitely an oppourtunity to see if this can be expanded upon and essentially turned into a library.
+This bring a much more declarative approach to creating visualizations, one that is:
+- Closer to native web languages (HTML / XML and JavaScript)
+- Works great with Web Components
+- Provides a much clearer, almost pure `1:1` mapping of input (source code) to output (HTML)
+- Integrates JavaScript and the ability to work within a scope, but still author HTML primarily
+- Tagged template literals (lit-html, `import { svg }`) provides efficient management of the DOM, only updating when data changes
 
-What the full scope of this project is still being worked on (see OBjectives), there are still a few design elements we can keep in mind as we go, in terms of determining viablity of the idea overall. 
-- Consistent terminology / domain specific concepts through documentation
-- Set of primitives that can be composed together to create fully realized and robust solutions (possibly as wrappers around all standard SVG elements to start?)
+This is of course a very low level solution, and so this repository aims to try and find any patterns and conventions that can be extrapolated into a library or set of packages that can be documented, tested, and published for others to use.
+
+
+## API Design (WIP)
+So with the random plot generator in mind and our desire to achieve a development workflow combinging SVG + JavaScript, there is definitely oppourtunity to see if this can be expanded upon and essentially turned into a library and / or set of packages.
+
+What the full scope of this project is yet is still being worked on (see _Objectives_) but there are still a few design elements we can keep in mind as we go, in terms of determining viablity of the idea overall: 
+- Establish a consistent terminology / domain specific concepts through documentation
+- Create a set of primitives that can be composed together to create fully realized and robust solutions (possibly as wrappers around all standard SVG elements to start with like `<circle>`, `<line>`, etc?)
 - Determine best way to interop / interface with different data services and sources, like a D3 or maybe a products custom backend data.  Maybe write the project in TypeScript?
 
 ## Objectives
