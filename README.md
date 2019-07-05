@@ -9,7 +9,7 @@ The idea behind this POC is to see if there is a viable path towards creating a 
 The primary motivation of this project is to promote an alternative approach to creating visualizations for the web leveraging more of the native capabilities already available in today's modern browsers.  By combining SVG and JavaScript, a more declarative method of authoring vizualizations can be achieved while also improving maintainability, testability, and performance.
 
 ### A long time ago...
-If we start by thinking about HTML and it's declarivate nature, we can arrive at one of it's most compelling features for developers, in that it is fairly easy to visualize the output of the code you write to the output you see in the browser.  Without any library or framework involved, essentially the code you write is `1:1` as you would expect when viewing the source.  This is further reinforced given that HTML is structure component of the web.  (CSS being presentation, and JavaScript being interactivity.)
+If we start by thinking about HTML and its semantic and [declarivate](https://en.wikipedia.org/wiki/Declarative_programming) nature, we can arrive at one of it's most compelling features for developers, in that it is fairly easy to visualize the output of the code you write to the output you see in the browser.  Without any library or framework involved, essentially the code you write is `1:1` as you would expect when viewing the source.  This is further reinforced given that HTML is structure component of the web.  (CSS being presentation, and JavaScript being interactivity.)
 
 For example, this can be pretty easily understood, in terms of what the output would be.
 ```html
@@ -42,7 +42,7 @@ HTML even has tags that can be used for drawing shapes like `<circle>` and `<lin
 
 
 ### A JavaScript Templating Engine
-This will become more influential in a later section, but worth intorducing as it is a foundational element to the over all API design, and that is one of the coolest new feartures introduced into JavaScript lately; the tagged [template literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals).
+This will become more influential in a later section, but worth intorducing as it is a foundational component to the over all API design, and that is one of the coolest new feartures introduced into JavaScript lately; the tagged [template literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals).
 
 With this syntax, dynamic string interpolation (templating) now becomes a first class citizen in JavaScript, bring powerful syntax like this now for free to the browser:
 ```javascript
@@ -130,6 +130,7 @@ If we take a look at the random plot generator this POC was inpired from, we can
 We can see that by combining SVG + JavaScript, we are able [achieve that output](https://github.com/ProjectEvergreen/random-plot-generator/blob/master/src/components/plot-generator.js#L86) with code that looks like this (and a little help from **lit-html**):
 ```javascript
 import { svg } from 'https://unpkg.com/lit-html@0.10.2/lit-html.js';
+import { repeat } from 'https://unpkg.com/lit-html@0.10.2/lib/repeat.js'; // TODO replace with map?
 
 const width = 500;
 const height = 500;
@@ -175,13 +176,13 @@ What the full scope of this project is yet is still being worked on (see _Object
 
 ## Objectives
 1. Identify and implement some (three - five?) basic charts stand alone, just single file examples in the sandbox environment)
-  - Pie Chart
-  - Bar Chart
-  - Line Graph
-  - others?
+    - ~~[Pie Chart](https://github.com/thescientist13/dataviz-poc/pull/1)~~
+    - Bar Chart
+    - Line Graph
+    - others?
 1. Identify some examples from the [D3 Gallery](https://github.com/d3/d3/wiki/Gallery) using D3 as a data engine, but do all the rendering with lit-html (no optimizations, just single file examples in the sandbox environment)
-  - TBD
-  - TBD
+    - TBD
+    - TBD
 1. Identify oppourtunities for common primitives (code that could become standalong packages for creating charts) or even standard charts the project itself could offer (bar, line, graph, etc)
 1. Identify oppourtunities for resuing different types of data engines, aside from D3 (default?), like Vega or even a custom one?
 
