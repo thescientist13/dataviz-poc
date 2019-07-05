@@ -9,9 +9,11 @@
     "url": "git+https://github.com/thescientist13/dataviz-poc.git"
   },
   "scripts": {
+    "lint": "eslint \"./src/**/**/*.js\"",
     "start": "live-server ./src --open"
   },
   "devDependencies": {
+    "eslint": "^6.0.1",
     "live-server": "^1.2.0"
   }
 }
