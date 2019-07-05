@@ -11,8 +11,9 @@ class App extends HTMLElement {
     this.slices = JSON.stringify([
       { percent: 0.1, color: 'Coral' },
       { percent: 0.65, color: 'CornflowerBlue' },
-      { percent: 0.2, color: '#00ab6b' },
-    ])
+      { percent: 0.2, color: '#00ab6b' }
+    ]);
+    
     this.root = this.attachShadow({ mode: 'open' });
     
     render(this.template(), this.root);
@@ -32,7 +33,6 @@ class App extends HTMLElement {
       };
     });
   }
-
 
   template() {
     return html`
