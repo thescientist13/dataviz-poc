@@ -178,7 +178,7 @@ What the full scope of this project is yet is still being worked on (see _Object
 1. Identify and implement some (three - five?) basic charts stand alone, just single file examples in the sandbox environment)
     - ~~[Pie Chart](https://github.com/thescientist13/dataviz-poc/pull/1)~~
     - Bar Chart
-    - Line Graph
+    - ~~[Line Graph](https://github.com/thescientist13/dataviz-poc/pull/5)~~
     - others?
 1. Identify some examples from the [D3 Gallery](https://github.com/d3/d3/wiki/Gallery) using D3 as a data engine, but do all the rendering with lit-html (no optimizations, just single file examples in the sandbox environment)
     - TBD
