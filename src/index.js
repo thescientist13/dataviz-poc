@@ -1,6 +1,7 @@
 import { html, render } from 'https://unpkg.com/lit-html@0.10.2/lib/lit-extended.js';
 import './lib/chart.js';
 import './lib/pie.js';
+import './lib/line.js';
 
 class App extends HTMLElement {
   
@@ -13,6 +14,7 @@ class App extends HTMLElement {
       { percent: 0.65, color: 'CornflowerBlue' },
       { percent: 0.2, color: '#00ab6b' }
     ]);
+    this.linePoints = '00,120 20,60 40,80 60,20 80,80 100,80 120,60 140,100 160,90 180,80 200,110 220,50 240,70 260,100 280,100 300,40 320,10 340,100 360,100 380,120 400,60 420,70 440,80';
     
     this.root = this.attachShadow({ mode: 'open' });
     
@@ -52,6 +54,8 @@ class App extends HTMLElement {
         <h2>Pie Chart</h2>
         <pie-chart slices$=${this.slices}></pie-chart>
 
+        <h2>Line Chart</h2>
+        <line-chart lines$=${this.linePoints}></line-chart>
       </div>
     `;
   }
