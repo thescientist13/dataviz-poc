@@ -15,7 +15,6 @@ class LineChartComponent extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldVal, newVal) {
-
     switch (name) {
 
       case 'lines':
@@ -29,34 +28,31 @@ class LineChartComponent extends HTMLElement {
     }
   }
 
+  /* eslint-disable indent */
   template() {
     return svg`
-
     <div style="padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;">
-    
-    <svg width="500" height="500" viewBox="0 0 500 100" style="background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;">
+      <svg width="500" height="500" viewBox="0 0 500 100" style="background: white;
         width: 500px;
         height: 100px;
         border-left: 1px dotted #555;
         border-bottom: 1px dotted #555;
         padding: 20px 20px 20px 0;
       ">
-  
-    <polyline
-       fill="none"
-       stroke="#0074d9"
-       stroke-width="2"
-       points= "${this._linePoints}"
-     />
-    
-  </svg>
-
-  </div>
+      <polyline
+        fill="none"
+        stroke="#0074d9"
+        stroke-width="2"
+        points= "${this._linePoints}"
+      />
+      </svg>
+    </div>
     `;
   }
+  /* eslint-enable */
 }
 
 customElements.define('line-chart', LineChartComponent);
